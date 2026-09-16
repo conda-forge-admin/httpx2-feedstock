@@ -36,7 +36,7 @@ outputs:
         - hatchling
         - pip
         - python ${{ python_min }}.*
-        - uv-dynamic-versioning >=0.14.0
+        - uv-dynamic-versioning >=0.14.1
       run:
         - h11 >=0.16
         - python >=${{ python_min }}
@@ -45,7 +45,7 @@ outputs:
         - anyio >=4.5.0,<5.0
         - h2 >=3,<5
         - socksio 1.*
-        - trio >=0.22.0,<1.0
+        - trio >=0.34.0,<1.0
     tests:
       - python:
           imports: httpcore2
@@ -76,17 +76,17 @@ outputs:
         - uv-dynamic-versioning >=0.8.0
       run:
         - ${{ pin_subpackage("httpcore2", exact=True) }}
-        - anyio
+        - anyio >=4.10
         - idna >=3.18
         - python >=${{ python_min }}
         - truststore >=0.10
         - typing_extensions >=4.5.0
       run_constraints:
         - backports.zstd >=1.0.0
-        - click >=8.4
+        - click >=8.4.2
+        - h2 >=3,<5
         - pygments 2.*
         - rich >=10,<16
-        - h2 >=3,<5
         - socksio 1.*
         - wsproto >=1.2
     tests:
@@ -98,10 +98,10 @@ outputs:
             - ${{ python_check_max }}.*
       - requirements:
           run:
-            - click >=8.4
+            - click
+            - pygments
             - python ${{ python_min }}.*
-            - pygments 2.*
-            - rich >=10,<16
+            - rich
         script:
           env:
             PYTHONIOENCODING: utf-8
