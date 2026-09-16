@@ -4,6 +4,7 @@ schema_version: 1
 context:
   version: "2.13.0"
   python_check_max: "3.14"
+  uv_dynamic_versioning_min: "0.14.1"
 
 recipe:
   name: httpx2-split
@@ -36,7 +37,7 @@ outputs:
         - hatchling
         - pip
         - python ${{ python_min }}.*
-        - uv-dynamic-versioning >=0.14.1
+        - uv-dynamic-versioning >=${{ uv_dynamic_versioning_min }}
       run:
         - h11 >=0.16
         - python >=${{ python_min }}
@@ -73,7 +74,7 @@ outputs:
         - hatchling
         - pip
         - python ${{ python_min }}.*
-        - uv-dynamic-versioning >=0.8.0
+        - uv-dynamic-versioning >=${{ uv_dynamic_versioning_min }}
       run:
         - ${{ pin_subpackage("httpcore2", exact=True) }}
         - anyio >=4.10
