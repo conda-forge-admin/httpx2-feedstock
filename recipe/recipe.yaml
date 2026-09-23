@@ -51,8 +51,6 @@ outputs:
     tests:
       - package_contents:
           strict: true
-          files:
-            - etc/conda/test-files/httpcore2/**
           site_packages:
             - httpcore2/**
             - httpcore2-${{ version }}.dist-info/**
@@ -101,8 +99,6 @@ outputs:
     tests:
       - package_contents:
           strict: true
-          files:
-            - etc/conda/test-files/httpx2/**
           site_packages:
             - httpx2/**
             - httpx2-${{ version }}.dist-info/**
