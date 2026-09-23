@@ -5,6 +5,7 @@ context:
   version: "2.13.0"
   python_check_max: "3.14"
   uv_dynamic_versioning_min: "0.14.1"
+  pip_install: -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check --check-build-dependencies
 
 recipe:
   name: httpx2-split
@@ -30,7 +31,7 @@ outputs:
       noarch: python
       script:
         - cd httpcore2
-        - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+        - ${{ PYTHON }} ${{ pip_install }}
     requirements:
       host:
         - hatch-fancy-pypi-readme
@@ -48,6 +49,13 @@ outputs:
         - socksio 1.*
         - trio >=0.34.0,<1.0
     tests:
+      - package_contents:
+          strict: true
+          files:
+            - etc/conda/test-files/httpcore2/**
+          site_packages:
+            - httpcore2/**
+            - httpcore2-${{ version }}.dist-info/**
       - python:
           imports: httpcore2
           pip_check: true
@@ -64,7 +72,7 @@ outputs:
     build:
       script:
         - cd httpx2
-        - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation --disable-pip-version-check
+        - ${{ PYTHON }} ${{ pip_install }}
       python:
         entry_points:
           - httpx2 = httpx2:main
@@ -91,6 +99,13 @@ outputs:
         - socksio 1.*
         - wsproto >=1.2
     tests:
+      - package_contents:
+          strict: true
+          files:
+            - etc/conda/test-files/httpx2/**
+          site_packages:
+            - httpx2/**
+            - httpx2-${{ version }}.dist-info/**
       - python:
           imports: httpx2
           pip_check: true
