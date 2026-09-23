@@ -2,7 +2,7 @@
 schema_version: 1
 
 context:
-  version: "2.13.0"
+  version: "2.13.1"
   python_check_max: "3.14"
   uv_dynamic_versioning_min: "0.14.1"
 
@@ -13,10 +13,10 @@ recipe:
 source:
   - target_directory: httpcore2
     url: https://pypi.org/packages/source/h/httpcore2/httpcore2-${{ version }}.tar.gz
-    sha256: 2adc8be4fb285fbcd6d894298db3b52c177e74b6674eda3a76bd36be3292a3db
+    sha256: e0aa977abe17e69a3b820a24542a6fa88702676d83880b8d194dcd18408e5103
   - target_directory: httpx2
     url: https://pypi.org/packages/source/h/httpx2/httpx2-${{ version }}.tar.gz
-    sha256: 81bd07dc67a3701729ef1f777a3c00c915d4539604fdb5afd327f8682f6b7b44
+    sha256: e48744a19e3af5ee48313d0ce5fe941d5422fae5705ea922a4aabf94d7800dfa
 
 build:
   noarch: python
